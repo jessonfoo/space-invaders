@@ -4,4 +4,5 @@ Classic space invaders game
 will feature a painted canvas with left and right movement. and moving enemies.
 ## libraries
 jQuery
+
 basic class inheritence
