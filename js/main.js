@@ -3,9 +3,6 @@ function gameCanvas() {
 	this.canvas = document.getElementById('space-invaders');
 	this.width = 600;
 	this.height= 375;
-	this.minVelocity = 15;
-	this.maxVelocity = 30;
-	this.stars = 100;
 	this.intervalId = 0;
 }
 
@@ -33,4 +30,11 @@ gameCanvas.prototype.initialise = function(div) {
 	this.canvas.width = this.width;
 	this.canvas.height = this.height;
 };
+gameCanvas.prototype.draw = function() {
+	var ctx = this.canvas.getContext("2d");
+	//	Draw the background.
+ 	ctx.fillStyle = '#000000';
+	ctx.fillRect(0, 0, this.width, this.height);
+};
+var test = new gameCanvas();
 
