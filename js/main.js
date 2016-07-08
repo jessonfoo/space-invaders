@@ -15,13 +15,14 @@ function createCanvas(){
 	ctx.fillStyle='#000';
   ctx.rect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   ctx.fill();
-  printCenteredText('space');
+  print('Space   Invaders');
   return self.canvas;
 
 }
-function printCenteredText(text){
-  ctx.font = "30px Arial";
+function print(text,color,size){
+  ctx.font = "30px Megrim";
   ctx.fillStyle="#fff";
+  ctx.font
   return ctx.fillText(text,CANVAS_WIDTH/2,CANVAS_HEIGHT/2);
 }
 // window.onKeyDown =
