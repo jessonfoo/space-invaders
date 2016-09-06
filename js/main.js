@@ -1,7 +1,7 @@
 var Game = function(id) {
   var canvas = document.getElementById(id);
   var ctx = canvas.getContext('2d');
-  ctx.fillStyle = '#e0e0e0';
+  ctx.fillStyle = 'lime';
   var canvasDimensions = {
     x: canvas.width,
     y: canvas.height
@@ -147,8 +147,8 @@ Player.prototype = {
 // bullet constructor
 var Bullet = function(center, velocity) {
   this.size = {
-    x: 2,
-    y: 2
+    x: 4,
+    y: 4
   };
   this.center = center;
   this.velocity = velocity;
@@ -164,8 +164,8 @@ Bullet.prototype = {
 var Invader = function(game, center) {
   this.game = game;
   this.size = {
-    x: 4,
-    y: 4
+    x: 9,
+    y: 9
   };
   this.center = center;
   this.patrolX = 0;
@@ -187,13 +187,13 @@ Invader.prototype = {
     this.center.y += this.speedY;
     this.patrolY += this.speedY;
 
-    if (Math.random() > 0.875 && !this.game.invadersBelow(this)) {
+    if (Math.random() > 0.925 && !this.game.invadersBelow(this)) {
       var bullet = new Bullet({
         x: this.center.x - 2,
-        y: this.center.y + this.size.y / 2 + 7
+        y: this.center.y + this.size.y / 2 + 9
       }, {
         x: 0,
-        y:  6
+        y:  9
       });
       this.game.addBody(bullet);
     }
@@ -203,8 +203,8 @@ Invader.prototype = {
 var createInvaders = function(game) {
   var invaders = [];
   for (var i = 0; i < 60; i++) {
-    var x = 50 + (i % 12) * 70;
-    var y = 50 + (i % 5) * 50;
+    var x = 100 + (i % 12) * 90;
+    var y = 30 + (i % 5) * 60;
    invaders.push(new Invader(game, {
       x: x,
       y: y
@@ -215,7 +215,7 @@ var createInvaders = function(game) {
 
 // function for defining area.
 var drawRect = function(ctx, body,color = '#000') {
-  ctx.fillStyle='#ffffff';
+  ctx.fillStyle='lime';
   ctx.fillRect(
     body.center.x - body.size.x / 2,
     body.center.y - body.size.y / 2,
