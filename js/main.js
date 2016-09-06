@@ -136,10 +136,10 @@ Player.prototype = {
   shoot: function() {
     var bullet = new Bullet({
       x: this.center.x,
-      y: this.center.y - this.size.y / 2 - 2
+      y: this.center.y - this.size.y / 2 - 5
     }, /* - 2 for colliding */ {
-      x: 0,
-      y: -8
+      x: +2,
+      y: -2
     });
     this.game.addBody(bullet);
   }
@@ -156,8 +156,8 @@ var Bullet = function(center, velocity) {
 // update function for bullet
 Bullet.prototype = {
   update: function() {
-    this.center.x += this.velocity.x;
-    this.center.y += this.velocity.y;
+    this.center.x += 0 ;
+    this.center.y += this.velocity.y - 4;
   }
 };
 // the invader constructor
@@ -189,11 +189,11 @@ Invader.prototype = {
 
     if (Math.random() > 0.875 && !this.game.invadersBelow(this)) {
       var bullet = new Bullet({
-        x: this.center.x,
-        y: this.center.y + this.size.y / 2 + 8
+        x: this.center.x - 2,
+        y: this.center.y + this.size.y / 2 + 7
       }, {
-        x: Math.random() - 2.5,
-        y: 2
+        x: 0,
+        y:  6
       });
       this.game.addBody(bullet);
     }
