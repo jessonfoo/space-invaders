@@ -164,8 +164,8 @@ Bullet.prototype = {
 var Invader = function(game, center) {
   this.game = game;
   this.size = {
-    x: 3,
-    y: 3
+    x: 4,
+    y: 4
   };
   this.center = center;
   this.patrolX = 0;
