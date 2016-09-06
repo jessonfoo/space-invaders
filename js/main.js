@@ -30,18 +30,18 @@ var Game = function(id) {
 
 
 // Loop for creating "invaders"
-var createInvaders = function(game) {
-  var invaders = [];
-  for (var i = 0; i < 24; i++) {
-    var x = 30 + (i % 8) * 30;
-    var y = 30 + (i % 3) * 30;
-    invaders.push(new Invader(game, {
-      x: x,
-      y: y
-    }));
-  }
-  return invaders;
-};
+// var createInvaders = function(game) {
+//   var invaders = [];
+//   for (var i = 0; i < 64; i++) {
+//     var x = 30 + (i % 8) * 30;
+//     var y = 30 + (i % 3) * 30;
+//     invaders.push(new Invader(game, {
+//       x: x,
+//       y: y
+//     }));
+//   }
+//   return invaders;
+// };
 
 Game.prototype = {
   update: function() {
@@ -147,8 +147,8 @@ Player.prototype = {
 // bullet constructor
 var Bullet = function(center, velocity) {
   this.size = {
-    x: 3,
-    y: 3
+    x: 2,
+    y: 2
   };
   this.center = center;
   this.velocity = velocity;
@@ -164,12 +164,14 @@ Bullet.prototype = {
 var Invader = function(game, center) {
   this.game = game;
   this.size = {
-    x: 15,
-    y: 15
+    x: 3,
+    y: 3
   };
   this.center = center;
   this.patrolX = 0;
-  this.speedX = 0.3;
+  this.speedX = Math.random();
+  this.patrolY = 0;
+  this.speedY = Math.random();
 };
 // invader's update function
 Invader.prototype = {
@@ -179,6 +181,11 @@ Invader.prototype = {
     }
     this.center.x += this.speedX;
     this.patrolX += this.speedX;
+    if (this.patrolY < 0 || this.patrolY > 40) {
+      this.speedY = -this.speedY;
+    }
+    this.center.y += this.speedY;
+    this.patrolY += this.speedY;
 
     if (Math.random() > 0.995 && !this.game.invadersBelow(this)) {
       var bullet = new Bullet({
@@ -195,10 +202,10 @@ Invader.prototype = {
  // factory function for creating array of invaders
 var createInvaders = function(game) {
   var invaders = [];
-  for (var i = 0; i < 24; i++) {
-    var x = 30 + (i % 8) * 30;
-    var y = 30 + (i % 3) * 30;
-    invaders.push(new Invader(game, {
+  for (var i = 0; i < 90; i++) {
+    var x = 70 + (i % 18) * 70;
+    var y = 70 + (i % 5) * 50;
+   invaders.push(new Invader(game, {
       x: x,
       y: y
     }));
