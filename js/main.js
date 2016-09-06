@@ -187,7 +187,7 @@ Invader.prototype = {
     this.center.y += this.speedY;
     this.patrolY += this.speedY;
 
-    if (Math.random() > 0.895 && !this.game.invadersBelow(this)) {
+    if (Math.random() > 0.835 && !this.game.invadersBelow(this)) {
       var bullet = new Bullet({
         x: this.center.x,
         y: this.center.y + this.size.y / 2 + 2
