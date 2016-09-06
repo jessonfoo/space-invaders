@@ -169,9 +169,9 @@ var Invader = function(game, center) {
   };
   this.center = center;
   this.patrolX = 0;
-  this.speedX = Math.random();
+  this.speedX = Math.random()*4;
   this.patrolY = 0;
-  this.speedY = Math.random();
+  this.speedY = Math.random()*4;
 };
 // invader's update function
 Invader.prototype = {
@@ -203,8 +203,8 @@ Invader.prototype = {
 var createInvaders = function(game) {
   var invaders = [];
   for (var i = 0; i < 90; i++) {
-    var x = 70 + (i % 18) * 70;
-    var y = 70 + (i % 5) * 50;
+    var x = 50 + (i % 18) * 70;
+    var y = 50 + (i % 5) * 50;
    invaders.push(new Invader(game, {
       x: x,
       y: y
