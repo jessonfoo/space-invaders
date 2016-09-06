@@ -139,7 +139,7 @@ Player.prototype = {
       y: this.center.y - this.size.y / 2 - 2
     }, /* - 2 for colliding */ {
       x: 0,
-      y: -6
+      y: -8
     });
     this.game.addBody(bullet);
   }
@@ -187,12 +187,12 @@ Invader.prototype = {
     this.center.y += this.speedY;
     this.patrolY += this.speedY;
 
-    if (Math.random() > 0.735 && !this.game.invadersBelow(this)) {
+    if (Math.random() > 0.875 && !this.game.invadersBelow(this)) {
       var bullet = new Bullet({
         x: this.center.x,
-        y: this.center.y + this.size.y / 2 + 2
+        y: this.center.y + this.size.y / 2 + 8
       }, {
-        x: Math.random() - 0.5,
+        x: Math.random() - 2.5,
         y: 2
       });
       this.game.addBody(bullet);
@@ -202,8 +202,8 @@ Invader.prototype = {
  // factory function for creating array of invaders
 var createInvaders = function(game) {
   var invaders = [];
-  for (var i = 0; i < 90; i++) {
-    var x = 50 + (i % 18) * 70;
+  for (var i = 0; i < 60; i++) {
+    var x = 50 + (i % 12) * 70;
     var y = 50 + (i % 5) * 50;
    invaders.push(new Invader(game, {
       x: x,
